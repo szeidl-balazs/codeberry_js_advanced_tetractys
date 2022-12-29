@@ -18,7 +18,7 @@ function pageLoaded () {
 
         for (i = 1; i <= row; i++) {
              
-            positionY = i * rectHeight - rectHeight;            
+            positionX = i * rectWidth - rectWidth;            
             context.fillRect(positionX, positionY, rectWidth, rectHeight);                
             
             
@@ -30,7 +30,7 @@ function pageLoaded () {
                     context.fillStyle = 'black';
                 }    
                 
-                positionX = k * rectWidth - rectWidth;
+                positionY = k * rectHeight - rectHeight;
                 context.fillRect(positionX, positionY, rectWidth, rectHeight);
             }
             
