@@ -2,44 +2,30 @@ function pageLoaded () {
     var canvas = document.getElementById('myCanvas');
     var context = canvas.getContext('2d');
 
-    let canvasWidth = canvas.width;
-    let canvasHeight = canvas.height;
+    let base = 100;
+    let height = 86.6;
     
-    function drawCheckeredPattern(row,col) {
+    function drawTriangle (positionX, positionY) {
 
-        let rectWidth = canvasWidth / row;
-        let rectHeight = canvasHeight / col;
-        
-        let positionX = 0;
-        let positionY = 0;
+        for (i = 0; i < 3; i++) {
 
-        let i;
-        let k;
+            context.moveTo(positionX - i * base * .5, positionY + i * height);
+            context.lineTo(positionX + base * .5, positionY + height);
+            context.lineTo(positionX - base * .5, positionY + height);
+            context.lineTo(positionX, positionY);
 
-        for (i = 1; i <= row; i++) {
-             
-            positionX = i * rectWidth - rectWidth;            
-            context.fillRect(positionX, positionY, rectWidth, rectHeight);                
-            
-            
-            for (k = 1; k <= col; k++) {
 
-                if ((i + k) % 2 === 0) {
-                    context.fillStyle = 'white';
-                } else {
-                    context.fillStyle = 'black';
-                }    
-                
-                positionY = k * rectHeight - rectHeight;
-                context.fillRect(positionX, positionY, rectWidth, rectHeight);
-            }
-            
         }
 
-        
+
+
+
+        context.stroke();
+
+
     }
 
-    drawCheckeredPattern(8,8);
+    drawTriangle(225, 33);
     
 }
 
