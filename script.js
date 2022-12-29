@@ -9,14 +9,33 @@ function pageLoaded () {
 
         let rectWidth = canvasWidth / row;
         let rectHeight = canvasHeight / col;
+        
+        let positionX = 0;
+        let positionY = 0;
 
-        context.moveTo(0,0);
-        context.lineTo(rectWidth, rectHeight - rectHeight);
-        context.lineTo(rectWidth, rectHeight);
-        context.lineTo(rectWidth - rectWidth, rectHeight);
-        context.lineTo(rectWidth - rectWidth, rectHeight - rectHeight);
-        context.strokeStyle = 'black';
-        context.stroke();
+        let i;
+        let k;
+
+        for (i = 1; i <= row; i++) {
+             
+            positionY = i * rectHeight - rectHeight;            
+            context.fillRect(positionX, positionY, rectWidth, rectHeight);                
+            
+            
+            for (k = 1; k <= col; k++) {
+
+                if ((i + k) % 2 === 0) {
+                    context.fillStyle = 'white';
+                } else {
+                    context.fillStyle = 'black';
+                }    
+                
+                positionX = k * rectWidth - rectWidth;
+                context.fillRect(positionX, positionY, rectWidth, rectHeight);
+            }
+            
+        }
+
         
     }
 
